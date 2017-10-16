@@ -46,3 +46,17 @@ if __name__ == '__main__':
     b2 = np.percentile(b, 97.5)
     print(b1)
     print(b2)
+
+    # plot
+    # fig = plt.figure(figsize=(7, 7))
+    # plt.plot(ans["a"], ans["b"], "ro")
+    # plt.show()
+
+    npa = np.array(ans["a"])
+    npb = np.array(ans["b"])
+
+    N = len(ans["a"])
+    y50_base = npa + npb * 50
+    y50_std = y50_base.std()
+    y50 = np.random.normal(loc=y50_base, scale=y50_std, size=N)
+    print(y50)
