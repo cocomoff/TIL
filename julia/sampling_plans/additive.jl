@@ -26,7 +26,12 @@ get_filling_set_halton(m; b=2) = [halton(i, b) for i in 1:m]
 function get_filling_set_halton(m, n)
     bs = primes(max(ceil(Int, m * (log(n) + log(log(n)))), 6))
     seqs = [get_filling_set_halton(m, b=b) for b in bs[1:n]]
-    return [collect(x) for x in zip(seqs...)]
+    X = zeros(m, n)
+    for i in 1:n
+        X[:, i] = seqs[i]
+    end
+    # return [collect(x[1]) for x in zip(seqs)]
+    return X
 end
 
 m = 20
@@ -37,3 +42,6 @@ m = 20
 # Xseq_h2 = get_filling_set_halton(m, 23)
 # println(Xseq_h1)
 # println(Xseq_h2)
+
+Xs = get_filling_set_halton(m, 2)
+println(Xs)
