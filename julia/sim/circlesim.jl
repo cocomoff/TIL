@@ -62,6 +62,7 @@ function circleplotedges(points::Array{Point, 1}, edges::Dict{Int, Array{Int, 1}
     xlim(-5.5, 5.5)
     ylim(-5.5, 5.5)
     tight_layout()
+    savefig("sim2.png", format="png", dpi=300)
     show()
 end
 
