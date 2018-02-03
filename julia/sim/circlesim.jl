@@ -43,7 +43,9 @@ function circleplot(points::Array{Point, 1})
 end
 
 # plot N points and edges
-function circleplotedges(points::Array{Point, 1}, edges::Dict{Int, Array{Int, 1}})
+function circleplotedges(points::Array{Point, 1},
+    edges::Dict{Int, Array{Int, 1}};
+    idx=0)
     figure(figsize=(5, 5))
     # plot edges
     for i in 1:length(points)
@@ -62,8 +64,9 @@ function circleplotedges(points::Array{Point, 1}, edges::Dict{Int, Array{Int, 1}
     xlim(-5.5, 5.5)
     ylim(-5.5, 5.5)
     tight_layout()
-    savefig("sim2.png", format="png", dpi=300)
-    show()
+    savefig("sim$idx.png", format="png", dpi=300)
+    # show()
+    close()
 end
 
 dist(p1::Point, p2::Point) = sqrt((p1.x - p2.x)^2 + (p1.y - p2.y)^2)
