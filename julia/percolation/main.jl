@@ -69,6 +69,7 @@ end
 for N in 10:10:100
     rvec = Float64[]
     pp = 0.0:0.005:1.0
+    figure()
     for p in pp
         grid = generate(p, N)
         con = gen_connected(grid)
@@ -77,5 +78,6 @@ for N in 10:10:100
     end
 
     plot(pp, rvec, "bx--")
+    tight_layout()
     savefig("ratio$N.png")
 end
