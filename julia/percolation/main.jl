@@ -66,14 +66,16 @@ function img_gen(p; N=10)
 end
 
 
-rvec = Float64[]
-pp = 0.0:0.005:1.0
-for p in pp
-    grid = generate(p, N)
-    con = gen_connected(grid)
-    ratio = length(con) / (N * N)
-    push!(rvec, ratio)
-end
+for N in 10:10:100
+    rvec = Float64[]
+    pp = 0.0:0.005:1.0
+    for p in pp
+        grid = generate(p, N)
+        con = gen_connected(grid)
+        ratio = length(con) / (N * N)
+        push!(rvec, ratio)
+    end
 
-plot(pp, rvec, "bx--")
-savefig("ratio.png")
+    plot(pp, rvec, "bx--")
+    savefig("ratio$N.png")
+end
